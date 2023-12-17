@@ -1,0 +1,47 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Manage Certificados</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-success" (click)="AddCertificado()">
+                <i class='fas fa-plus-circle'></i><span> ADD</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover table-bordered table-content">
+          <thead>
+            <tr class="center-align">
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let certificado of certificadoList" class="center-align">
+              <td>{{ certificado.firstName }}</td>
+              <td>{{ certificado.lastName }}</td>
+              <td>{{ certificado.email }}</td>
+              <td>{{ certificado.address }}</td>
+              <td>{{ certificado.phone }}</td>
+              <td>
+                <a href="#" [routerLink]="['/ViewCertificado/', certificado.id]" class="btn"><i class='fas fa-eye view'></i></a>
+                <a href="#" [routerLink]="['/EditCertificado/', certificado.id]" class="btn"><i class="fa fa-edit edit"></i></a>
+                <button type="button" (click)="deleteCertificadoConfirmation(certificado)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td *ngIf="certificadoList.length == 0" colspan="6">No Certificado Found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
